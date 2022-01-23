@@ -21,7 +21,7 @@ function App() {
    });
 
    return (
-      <div className='App'>
+      <main className='App'>
          <ThemeProvider theme={theme}>
             <Paper sx={{height:'100vh'}}>
                <Grid container>
@@ -37,7 +37,7 @@ function App() {
                </Routes>
             </Paper>
          </ThemeProvider>
-      </div>
+      </main>
    );
 }
 

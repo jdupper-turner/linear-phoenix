@@ -13,6 +13,9 @@ interface INetworkAdminState {
    networks: INetwork[]
    networksById: { [key: number]: INetwork }
    currentNetwork: INetwork | null
+   mediaLengths: IMediaLength[]
+   mediaLengthsById: { [key: number]: IMediaLength }
+   currentMediaLength: IMediaLength | null
 }
 
 interface IUserAdminState {
@@ -23,6 +26,12 @@ interface IUserAdminState {
 }
 
 
+interface IMediaLength {
+   id: number
+   length: number
+   active: boolean
+   exactLengthMatch: boolean
+}
 
 interface INetwork {
    id: number
