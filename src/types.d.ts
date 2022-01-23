@@ -10,14 +10,18 @@ interface ISchedulePeriodState {
 
 interface INetworkAdminState {
    loading: boolean
-
+   
    networks: INetwork[]
    networksById: { [key: number]: INetwork }
    currentNetwork: INetwork | null
-
+   
    mediaLengths: IMediaLength[]
    mediaLengthsById: { [key: number]: IMediaLength }
    currentMediaLength: IMediaLength | null
+
+   dayParts: IDayPart[]
+   dayPartsById: { [key: number]: IDayPart }
+   currentDayPart: IDayPart | null
 }
 
 interface IUserAdminState {
@@ -27,6 +31,15 @@ interface IUserAdminState {
    currentUser: IUser | null
 }
 
+
+
+
+interface IDayPart {
+   id: number
+   name: string
+   startTime: number
+   endTime: number
+}
 
 interface IMediaLength {
    id: number

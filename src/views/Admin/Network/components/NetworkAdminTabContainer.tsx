@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { NetworkAdminTable } from './NetworkAdminTable';
 import { NetworkMediaLengthsTable } from './NetworkAdminMediaLengthsTable';
+import { NetworkAdminDayPartsTable } from './NetworkAdminDayPartTable';
 
 
 const styles = {
@@ -76,7 +77,7 @@ export default function NetworkAdminTabContainer() {
             </Box>
          </TabPanel>
          <TabPanel value={value} index={2}>
-            Day Parts
+            <NetworkAdminDayPartsTable />
          </TabPanel>
       </Box>
    );

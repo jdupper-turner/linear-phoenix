@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { sortArrayByProperty } from "../../../utils/objectUtils";
-import { GetMediaLengthsApi, GetNetworksApi } from "./NetworkAPI";
+import { GetDayPartsApi, GetMediaLengthsApi, GetNetworksApi } from "./NetworkAdminAPI";
 
 
 const initialState: INetworkAdminState = {
@@ -12,8 +12,12 @@ const initialState: INetworkAdminState = {
 
    mediaLengths: [],
    mediaLengthsById: {},
-   currentMediaLength: null
-}
+   currentMediaLength: null,
+
+   dayParts: [],
+   dayPartsById: {},
+   currentDayPart: null
+};
 
 
 export const networkAdminSlice = createSlice({
@@ -33,20 +37,29 @@ export const networkAdminSlice = createSlice({
             state.loading = true;
          })
          .addCase(getAllNetworks.fulfilled, (state: INetworkAdminState, action: any) => {
-            const networks = sortArrayByProperty(action.payload.networks, 'networkCode');
-            state.networks = networks;
+            state.networks = sortArrayByProperty(action.payload.networks, 'networkCode');
             state.networks.forEach(ntwk => { state.networksById[ntwk.id] = ntwk; });
             state.currentNetwork = state.currentNetwork || state.networks[6];
             state.loading = false;
          })
+
          .addCase(getPromoMediaLengths.pending, (state: INetworkAdminState) => {
             state.loading = true;
          })
          .addCase(getPromoMediaLengths.fulfilled, (state: INetworkAdminState, action: any) => {
-            const mediaLengths = sortArrayByProperty(action.payload, 'length');
-            state.mediaLengths = mediaLengths;
+            state.mediaLengths = sortArrayByProperty(action.payload, 'length');
             state.mediaLengths.forEach(ml => { state.mediaLengthsById[ml.id] = ml; });
             state.currentMediaLength = state.currentMediaLength || null;
+            state.loading = false;
+         })
+
+         .addCase(getNetworkDayParts.pending, (state: INetworkAdminState) => {
+            state.loading = true;
+         })
+         .addCase(getNetworkDayParts.fulfilled, (state: INetworkAdminState, action: any) => {
+            state.dayParts = sortArrayByProperty(action.payload.dayparts, 'startTime');
+            state.dayParts.forEach(dp => { state.dayPartsById[dp.id] = dp; })
+            state.currentDayPart = state.currentDayPart || null;
             state.loading = false;
          })
    }
@@ -65,6 +78,13 @@ export const getPromoMediaLengths = createAsyncThunk(
    async (networkId: number | null) => {
       if (!networkId) return;
       return await GetMediaLengthsApi(networkId);
+   }
+);
+
+export const getNetworkDayParts = createAsyncThunk(
+   'networkAdmin/getNetworkDayParts',
+   async (networkId: number) => {
+      return await GetDayPartsApi(networkId);
    }
 );
 
