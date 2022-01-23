@@ -26,7 +26,7 @@ export const NetworkAdminTable: FC = () => {
 
    return (
       <Box>
-         <Table size='small'>
+         <Table size='small' stickyHeader>
             <TableHead>
                <TableRow>
                   <TableCell>Network Code</TableCell>
@@ -36,8 +36,8 @@ export const NetworkAdminTable: FC = () => {
             </TableHead>
             <TableBody>
                {networks.map((network: INetwork, index: number) => (
-                  <TableRow key={index} onClick={() => handleClick(network.networkCode)}>
-                     <TableCell>
+                  <TableRow key={index}>
+                     <TableCell onClick={() => handleClick(network.networkCode)}>
                         {network.networkCode}
                      </TableCell>
                      <TableCell>

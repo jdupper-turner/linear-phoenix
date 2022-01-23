@@ -10,9 +10,11 @@ interface ISchedulePeriodState {
 
 interface INetworkAdminState {
    loading: boolean
+
    networks: INetwork[]
    networksById: { [key: number]: INetwork }
    currentNetwork: INetwork | null
+
    mediaLengths: IMediaLength[]
    mediaLengthsById: { [key: number]: IMediaLength }
    currentMediaLength: IMediaLength | null

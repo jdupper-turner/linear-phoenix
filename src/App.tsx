@@ -23,7 +23,7 @@ function App() {
    return (
       <main className='App'>
          <ThemeProvider theme={theme}>
-            <Paper sx={{height:'100vh'}}>
+            <Paper sx={{height:'100%'}}>
                <Grid container>
                   <NavigationBar />
                   <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />

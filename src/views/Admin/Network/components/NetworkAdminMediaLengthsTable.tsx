@@ -17,14 +17,13 @@ export const NetworkMediaLengthsTable: FC = () => {
       state.networkAdmin.mediaLengths
    );
 
-
    useEffect(() => {
       dispatch(getPromoMediaLengths(network?.id || null))
    }, [dispatch, network?.id]);
 
    return (
       <Box>
-         <Table size='small'>
+         <Table size='small' stickyHeader>
             <TableHead>
                <TableRow>
                   <TableCell>Media Length</TableCell>

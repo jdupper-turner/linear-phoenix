@@ -22,7 +22,10 @@ export const networkAdminSlice = createSlice({
    reducers: {
       setLoadingTo: (state: INetworkAdminState, action: PayloadAction<boolean>) => {
          state.loading = action.payload;
-      } 
+      },
+      setCurrentNetwork: (state: INetworkAdminState, action: PayloadAction<INetwork>) => {
+         state.currentNetwork = action.payload;
+      }
    },
    extraReducers: (builder) => {
       builder
@@ -33,7 +36,7 @@ export const networkAdminSlice = createSlice({
             const networks = sortArrayByProperty(action.payload.networks, 'networkCode');
             state.networks = networks;
             state.networks.forEach(ntwk => { state.networksById[ntwk.id] = ntwk; });
-            state.currentNetwork = state.currentNetwork || state.networks[0];
+            state.currentNetwork = state.currentNetwork || state.networks[6];
             state.loading = false;
          })
          .addCase(getPromoMediaLengths.pending, (state: INetworkAdminState) => {
@@ -66,5 +69,5 @@ export const getPromoMediaLengths = createAsyncThunk(
 );
 
 
-export const { setLoadingTo } = networkAdminSlice.actions;
+export const { setLoadingTo, setCurrentNetwork } = networkAdminSlice.actions;
 export default networkAdminSlice.reducer;

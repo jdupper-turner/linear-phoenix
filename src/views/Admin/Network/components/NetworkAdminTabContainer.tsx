@@ -7,6 +7,14 @@ import { NetworkAdminTable } from './NetworkAdminTable';
 import { NetworkMediaLengthsTable } from './NetworkAdminMediaLengthsTable';
 
 
+const styles = {
+   tabContainer: {
+      maxHeight: '80vh',
+      overflow: 'auto'
+   }
+};
+
+
 interface TabPanelProps {
    children?: React.ReactNode;
    index: number;
@@ -57,10 +65,15 @@ export default function NetworkAdminTabContainer() {
             </Tabs>
          </Box>
          <TabPanel value={value} index={0}>
-            <NetworkAdminTable />
+            <Box sx={styles.tabContainer}>
+               <NetworkAdminTable />
+            </Box>
+
          </TabPanel>
          <TabPanel value={value} index={1}>
-            <NetworkMediaLengthsTable />
+            <Box sx={styles.tabContainer}>
+               <NetworkMediaLengthsTable />
+            </Box>
          </TabPanel>
          <TabPanel value={value} index={2}>
             Day Parts
