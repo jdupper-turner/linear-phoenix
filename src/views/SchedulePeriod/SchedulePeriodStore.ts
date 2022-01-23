@@ -25,7 +25,7 @@ export const schedulePeriodSlice = createSlice({
 export const getSchedulePeriodById = createAsyncThunk(
    'schedulePeriod/getSchedulePeriodById',
    async (spId: number) => {
-      return await GetSchedulePeriodById(spId)
+      return await GetSchedulePeriodById(spId);
    }
 );
 

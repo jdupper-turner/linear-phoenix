@@ -1,18 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export const PLANNING_OPTIONS: NavigationPlanning[] = [
+export const PLANNING_OPTIONS: string[] = [
    'Last Promo Planning',
    'Last Graphic Planning'
 ];
 
-export const REPORT_OPTIONS: NavigationReports[] = [
+export const REPORT_OPTIONS: string[] = [
    'As Run',
    'Detailed Media Group',
    'Executive Media Group',
    'Inventory Summary'
 ];
 
-export const ADMIN_OPTIONS: NavigationAdmin[] = [
+export const ADMIN_OPTIONS: string[] = [
    'Planning',
    'Mapping',
    'Network',
@@ -22,18 +22,21 @@ export const ADMIN_OPTIONS: NavigationAdmin[] = [
 ]
 
 const initialState: INavigationState = {
-   currentPage: 'Home'
+   currentPage: 'Home',
+   currentDropdown: null
 };
 
 const navigationSlice = createSlice({
    name: 'navigation',
    initialState,
    reducers: {
-      setCurrentPage: (state: INavigationState, action: PayloadAction<CurrentPage>) => {
+      setCurrentPage: (state: INavigationState, action: PayloadAction<string>) => {
          state.currentPage = action.payload;
+         console.log(state.currentPage);
       },
-      setDropdownOption: (_state: INavigationState, action: PayloadAction<string>) => {
-         console.log(action.payload)
+      setDropdownOption: (state: INavigationState, action: PayloadAction<string>) => {
+         state.currentDropdown = action.payload
+         console.log(state)
       }
    },
    extraReducers: (builder) => {}

@@ -7,7 +7,7 @@ import { ADMIN_OPTIONS, PLANNING_OPTIONS, REPORT_OPTIONS, setCurrentPage, setDro
 
 export const NavigationBar = () => {
    const dispatch = useDispatch()
-   const onClick = (option: CurrentPage) => {
+   const onClick = (option: string) => {
       dispatch(setCurrentPage(option));
    };
 
@@ -17,11 +17,11 @@ export const NavigationBar = () => {
             <Grid item xs={12}>
 
                <Link to='/'>
-                  <Button onClick={() => onClick('Home')}>Home</Button>
+                  <Button onClick={() => dispatch(setCurrentPage('Home'))}>Home</Button>
                </Link>
 
                <Link to='/SchedulePeriod'>
-                  <Button onClick={() => onClick('Schedule Period')}>Schedule Period</Button>
+                  <Button onClick={() => dispatch(setCurrentPage('Schedule Period'))}>Schedule Period</Button>
                </Link>
 
                <NavigationMenu index={1} title='Planning' options={PLANNING_OPTIONS} />
@@ -44,7 +44,11 @@ const NavigationMenu: FC<INavigationMenu> = (props: INavigationMenu) => {
    const [anchor, setAnchor] = useState<null | HTMLElement>(null);
    const open = Boolean(anchor);
 
-   const handleClick = (event: MouseEvent<HTMLButtonElement>) => setAnchor(event.currentTarget);
+   const dispatch = useDispatch();
+   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+      setAnchor(event.currentTarget);
+      dispatch(setDropdownOption(props.title))
+   }
    const handleClose = () => setAnchor(null);
 
    return (
@@ -80,7 +84,9 @@ const NavigationMenuDropdown: FC<INavigationMenuDropdown> = (props: INavigationM
    const url = props.type + '/' + props.title.replaceAll(' ', '');
 
    const dispatch = useDispatch();
-   const onClick = () => dispatch(setDropdownOption(props.title));
+   const onClick = () => {
+      dispatch(setCurrentPage(props.title));
+   };
 
    return (
       <MenuItem key={props.index} onClick={onClick}>
