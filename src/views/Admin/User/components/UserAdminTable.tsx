@@ -7,7 +7,9 @@ import { UserAdminEdit } from './UserAdminEdit';
 
 
 export const UserAdminTable: FC = () => {
-   const users = useSelector((state: RootState) => state.userAdmin.users);
+   const users: IUser[] = useSelector((state: RootState) =>
+      state.userAdmin.users
+   );
 
    const [openModal, setOpenModal] = useState<boolean>(false);
    const [user, setUser] = useState<IUser | null>(null);

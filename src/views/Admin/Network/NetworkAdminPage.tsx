@@ -12,7 +12,7 @@ export const NetworkAdminPage: FC = () => {
       dispatch(getAllNetworks())
    }, [dispatch])
 
-   const loading = useSelector((state: RootState) => state.networkAdmin.loading);
+   const loading: boolean = useSelector((state: RootState) => state.networkAdmin.loading);
    
    return (
       <div>

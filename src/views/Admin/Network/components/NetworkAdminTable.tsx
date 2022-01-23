@@ -7,7 +7,9 @@ import NetworkAdminEdit from './NetworkAdminEdit';
 
 
 export const NetworkAdminTable: FC = () => {
-   const networks = useSelector((state: RootState) => state.networkAdmin.networks);
+   const networks: INetwork[] = useSelector((state: RootState) =>
+      state.networkAdmin.networks
+   );
 
    const [openModal, setOpenModal] = useState<boolean>(false);
    const [network, setNetwork] = useState<INetwork | null>(null);
