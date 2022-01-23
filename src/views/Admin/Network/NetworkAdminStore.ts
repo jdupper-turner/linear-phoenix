@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { sortArrayByProperty } from "../../../utils/objectUtils";
 import { GetNetworksApi } from "./NetworkAPI";
 
 const initialState: INetworkAdminState = {
@@ -22,7 +23,8 @@ export const networkAdminSlice = createSlice({
             state.loading = true;
          })
          .addCase(getAllNetworks.fulfilled, (state: INetworkAdminState, action: any) => {
-            state.networks = action.payload.networks as INetwork[];
+            const networks = sortArrayByProperty(action.payload.networks, 'networkCode');
+            state.networks = networks;
             state.networks.forEach(ntwk => { state.networksById[ntwk.id] = ntwk; })
             state.loading = false;
          })

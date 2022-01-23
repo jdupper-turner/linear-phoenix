@@ -15,6 +15,14 @@ interface INetworkAdminState {
    currentNetwork: INetwork | null
 }
 
+interface IUserAdminState {
+   loading: boolean
+   users: IUser[]
+   usersById: { [key: number]: IUser }
+   currentUser: IUser | null
+}
+
+
 
 interface INetwork {
    id: number
@@ -26,4 +34,10 @@ interface ISchedulePeriod {
    id: number
    startDate: string
    endDate: string
+}
+
+interface IUser {
+   id: number
+   userName: string
+   emailAddress: string
 }

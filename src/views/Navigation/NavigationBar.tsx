@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Menu, MenuItem, Typography } from '@mui/material';
+import { Box, Button, Grid, Menu, MenuItem } from '@mui/material';
 import { FC, MouseEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -7,9 +7,6 @@ import { ADMIN_OPTIONS, PLANNING_OPTIONS, REPORT_OPTIONS, setCurrentPage, setDro
 
 export const NavigationBar = () => {
    const dispatch = useDispatch()
-   const onClick = (option: string) => {
-      dispatch(setCurrentPage(option));
-   };
 
    return (
       <Box>
@@ -45,11 +42,11 @@ const NavigationMenu: FC<INavigationMenu> = (props: INavigationMenu) => {
    const open = Boolean(anchor);
 
    const dispatch = useDispatch();
+   const handleClose = () => setAnchor(null);
    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
       setAnchor(event.currentTarget);
       dispatch(setDropdownOption(props.title))
    }
-   const handleClose = () => setAnchor(null);
 
    return (
       <div style={{ display: 'inline' }} key={props.index}>

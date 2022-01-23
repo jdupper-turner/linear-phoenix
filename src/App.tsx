@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Grid, Typography } from '@mui/material';
+import { Grid } from '@mui/material';
 import { HomePage } from './views/Home/HomePage';
 import { SchedulePeriodPage } from './views/SchedulePeriod/SchedulePeriodPage';
 import { AsRunReportPage } from './views/Reports/AsRun/AsRunReportPage';
@@ -12,10 +12,6 @@ import './App.css';
 function App() {
    return (
       <div className='App'>
-         <Typography variant='h4'>
-            Phoenix
-         </Typography>
-
          <Grid container>
             <NavigationBar />
          </Grid>

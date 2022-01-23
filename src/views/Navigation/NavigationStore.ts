@@ -32,11 +32,9 @@ const navigationSlice = createSlice({
    reducers: {
       setCurrentPage: (state: INavigationState, action: PayloadAction<string>) => {
          state.currentPage = action.payload;
-         console.log(state.currentPage);
       },
       setDropdownOption: (state: INavigationState, action: PayloadAction<string>) => {
          state.currentDropdown = action.payload
-         console.log(state)
       }
    },
    extraReducers: (builder) => {}

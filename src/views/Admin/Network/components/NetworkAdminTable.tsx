@@ -13,7 +13,7 @@ export const NetworkAdminTable: FC = () => {
    const [network, setNetwork] = useState<INetwork | null>(null);
 
    const handleClick = (networkCode: string) => {
-      const network = networks.filter(n => n.networkCode == networkCode)[0];
+      const network = networks.filter(n => n.networkCode === networkCode)[0];
       setNetwork(network);
       setOpenModal(!openModal)
    };
