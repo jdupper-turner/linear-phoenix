@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getNetworkDayParts } from '../NetworkAdminStore';
 import { RootState } from '../../../../app/store';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import { convertSecondsToDuration } from '../../../../utils/timeUtils';
+import { convertSecondsToHHMM } from '../../../../utils/timeUtils';
 
 
 export const NetworkAdminDayPartsTable: FC = () => {
@@ -40,10 +40,10 @@ export const NetworkAdminDayPartsTable: FC = () => {
                         {dayPart.name}
                      </TableCell>
                      <TableCell>
-                        {convertSecondsToDuration(dayPart.startTime)}
+                        {convertSecondsToHHMM(dayPart.startTime)}
                      </TableCell>
                      <TableCell>
-                        {convertSecondsToDuration(dayPart.endTime)}
+                        {convertSecondsToHHMM(dayPart.endTime)}
                      </TableCell>
                      <TableCell>
                         <DeleteOutlineIcon onClick={() => onDelete(dayPart)} />

@@ -1,7 +1,8 @@
 import { FC, forwardRef, useState } from 'react';
-import { AppBar, Button, Dialog, IconButton, Slide, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, Dialog, FormControl, Grid, IconButton, Slide, TextField, Toolbar, Typography } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 import CloseIcon from '@mui/icons-material/Close';
+
 
 const Transition = forwardRef(function Transition(
    props: TransitionProps & {
@@ -40,7 +41,45 @@ export const UserAdminEdit: FC<IUserAdminEdit> = (props: IUserAdminEdit) => {
                   </Button>
                </Toolbar>
             </AppBar>
+            {props.user ? <EditUserForm user={props.user} /> : null}
          </Dialog>
       </div>
    );
+};
+
+
+interface IEditUserForm {
+   user: IUser
+}
+
+const EditUserForm: FC<IEditUserForm> = (props: IEditUserForm) => {
+   return (
+      <Grid sx={{ mt: 1, ml: 1 }} container spacing={2}>
+
+         <Grid item xs={3}>
+            <FormControl fullWidth>
+               <TextField
+                  required
+                  size='small'
+                  label='User Name'
+                  value={props.user.userName} />
+            </FormControl>
+         </Grid>
+
+         <Grid item xs={3}>
+            <FormControl fullWidth>
+               <TextField
+                  required
+                  size='small'
+                  label='Email Address'
+                  value={props.user.emailAddress} />
+            </FormControl>
+         </Grid>
+
+         <Grid item xs={12}>
+
+         </Grid>
+
+      </Grid>
+   )
 };

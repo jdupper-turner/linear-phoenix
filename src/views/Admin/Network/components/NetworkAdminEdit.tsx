@@ -56,7 +56,7 @@ export default function NetworkAdminEdit(props: INetworkAdminEdit) {
 
 
 interface IEditNetworkForm {
-   network: INetwork | null
+   network: INetwork
 }
 
 const EditNetworkForm = (props: IEditNetworkForm) => {
