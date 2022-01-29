@@ -65,19 +65,23 @@ export default function NetworkAdminTabContainer() {
                <Tab label="Day Parts" {...a11yProps(2)} />
             </Tabs>
          </Box>
+
          <TabPanel value={value} index={0}>
             <Box sx={styles.tabContainer}>
                <NetworkAdminTable />
             </Box>
-
          </TabPanel>
+
          <TabPanel value={value} index={1}>
             <Box sx={styles.tabContainer}>
                <NetworkMediaLengthsTable />
             </Box>
          </TabPanel>
+
          <TabPanel value={value} index={2}>
-            <NetworkAdminDayPartsTable />
+            <Box sx={styles.tabContainer}>
+               <NetworkAdminDayPartsTable />
+            </Box>
          </TabPanel>
       </Box>
    );

@@ -27,7 +27,7 @@ export const SchedulePeriodWeek: FC<ISchedulePeriodWeek> = (props: ISchedulePeri
 
    for (var i = 0; i < 7; ++i) {
       weekOfMonthTiles.push(
-         <Box key={i} sx={styles.weekOfMonthTile}>
+         <Box key={i + props.weekStartDate.toString()} sx={styles.weekOfMonthTile}>
             {tempDate.format("MM/DD/YYYY")}
             {SchedulePeriodCalendarWeek(tempDate)}
          </Box>
@@ -52,7 +52,7 @@ const SchedulePeriodCalendarWeek = (date: dayjs.Dayjs) => {
 
    daysOfWeek.forEach((dayOfWeek: number, index: number) => {
       dayOfWeekTiles.push(
-         <Grid item xs={1} sx={styles.dayOfWeekTile}>
+         <Grid key={dayOfWeek + index} item xs={1} sx={styles.dayOfWeekTile}>
             {date.add(dayOfWeek, 'day').format("ddd")}
          </Grid>
       );

@@ -2,13 +2,17 @@ import { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../app/store';
 import { getAllNetworks, setCurrentNetwork } from './NetworkAdminStore';
-import { FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent, Typography } from '@mui/material';
+import { FormControl, Grid, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import NetworkAdminTabContainer from './components/NetworkAdminTabContainer';
 import LinearProgress from '@mui/material/LinearProgress';
 
 
 export const NetworkAdminPage: FC = () => {
    const dispatch = useDispatch();
+
+   useEffect(() => {
+      dispatch(getAllNetworks())
+   }, [dispatch])
 
    const loading: boolean = useSelector((s: RootState) => s.networkAdmin.loading);
    const network: INetwork | null = useSelector((s: RootState) => s.networkAdmin.currentNetwork);
@@ -23,10 +27,6 @@ export const NetworkAdminPage: FC = () => {
       setNetworkCode(network.networkCode);
       dispatch(setCurrentNetwork(network));
    };
-
-   useEffect(() => {
-      dispatch(getAllNetworks())
-   }, [dispatch])
 
    return (
       <Grid container>

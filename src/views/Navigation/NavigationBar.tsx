@@ -21,9 +21,9 @@ export const NavigationBar = () => {
                   <Button onClick={() => dispatch(setCurrentPage('Schedule Period'))}>Schedule Period</Button>
                </Link>
 
-               <NavigationMenu index={1} title='Planning' options={PLANNING_OPTIONS} />
-               <NavigationMenu index={2} title='Reports' options={REPORT_OPTIONS} />
-               <NavigationMenu index={3} title='Admin' options={ADMIN_OPTIONS} />
+               <NavigationMenu key={'planning'} index={1} title='Planning' options={PLANNING_OPTIONS} />
+               <NavigationMenu key={'reports'} index={2} title='Reports' options={REPORT_OPTIONS} />
+               <NavigationMenu key={'admin'} index={3} title='Admin' options={ADMIN_OPTIONS} />
             </Grid>
          </Grid>
       </Box>
@@ -49,7 +49,7 @@ const NavigationMenu: FC<INavigationMenu> = (props: INavigationMenu) => {
    }
 
    return (
-      <div style={{ display: 'inline' }} key={props.index}>
+      <div style={{ display: 'inline' }} key={props.index + props.title}>
          <Button
             id='basic-button'
             aria-controls={open ? 'basic-menu' : undefined}
@@ -64,7 +64,7 @@ const NavigationMenu: FC<INavigationMenu> = (props: INavigationMenu) => {
             open={open}
             onClose={handleClose}
             MenuListProps={{ 'aria-labelledby': 'basic-button' }}>
-            {props.options.map((o, i) => <NavigationMenuDropdown type={props.title} title={o} index={i} />)}
+            {props.options.map((o, i) => <NavigationMenuDropdown key={i + props.title} type={props.title} title={o} index={i} />)}
          </Menu>
       </div>
    );
