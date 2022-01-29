@@ -5,6 +5,7 @@ interface INavigationState {
 
 interface IHomePageState {
    loading: boolean
+   statusMessage: string
    shopsChangeNotifications: IShopsChangeNotification[]
 }
 

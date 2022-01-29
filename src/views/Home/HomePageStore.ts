@@ -3,6 +3,7 @@ import { GetShopsChangeNotificationsApi } from './HomePageAPI';
 
 const initialState: IHomePageState = {
    loading: false,
+   statusMessage: "",
    shopsChangeNotifications: []
 };
 
@@ -19,6 +20,10 @@ export const homePageSlice = createSlice({
             const { notifications } = action.payload;
             state.shopsChangeNotifications = notifications;
             state.loading = false;
+         })
+         .addCase(getShopsChangeNotifications.rejected, (state: IHomePageState, action: any) => {
+            state.loading = false;
+            state.statusMessage = action.error.name + ': ' + action.error.message;
          })
    }
 });

@@ -12,5 +12,6 @@ export const GetShopsChangeNotificationsApi = async (networkId: number) => {
    };
 
    return fetch('http://localhost:5000/api/Shops/GetShopsNotificationChanges', config)
-      .then((res) => res.json());
+      .then((res) => res.json())
+      .catch((err) => { throw err; });
 };

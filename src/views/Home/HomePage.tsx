@@ -7,13 +7,8 @@ import { getShopsChangeNotifications } from './HomePageStore';
 import LinearProgress from '@mui/material/LinearProgress';
 
 export const HomePage = () => {
-   const networkId: number | undefined = useSelector(
-      (s: RootState) => s.networkAdmin.currentNetwork?.id
-   );
-   const loading: boolean = useSelector(
-      (s: RootState) => s.home.loading
-   );
-
+   const networkId: number | undefined = useSelector((s: RootState) => s.networkAdmin.currentNetwork?.id);
+   const loading: boolean = useSelector((s: RootState) => s.home.loading);
    const dispatch = useDispatch();
 
    useEffect(() => {
