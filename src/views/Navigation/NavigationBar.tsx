@@ -3,7 +3,7 @@ import { FC, MouseEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { ADMIN_OPTIONS, PLANNING_OPTIONS, REPORT_OPTIONS, setCurrentPage, setDropdownOption } from './NavigationStore';
-
+import { NetworkPicker } from '../Admin/Network/components/NetworkPicker'
 
 export const NavigationBar = () => {
    const dispatch = useDispatch()
@@ -12,6 +12,9 @@ export const NavigationBar = () => {
       <Box>
          <Grid container>
             <Grid item xs={12}>
+               <div style={{display:'inline'}}>
+                  <NetworkPicker />
+               </div>
 
                <Link to='/'>
                   <Button onClick={() => dispatch(setCurrentPage('Home'))}>Home</Button>

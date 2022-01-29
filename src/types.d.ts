@@ -3,6 +3,13 @@ interface INavigationState {
    currentDropdown: string | null
 }
 
+interface IHomePageState {
+   loading: boolean
+   shopsChangeNotifications: IShopsChangeNotification[]
+}
+
+
+
 interface ISchedulePeriodState {
    loading: boolean
    schedulePeriod: ISchedulePeriod | null
@@ -94,4 +101,14 @@ interface IUserActivity {
 interface IUserActivityType {
    id: number
    name: string
+}
+
+interface IShopsChangeNotification {
+   id: number
+   cid: string
+   description: string
+   status: string
+   shopsUpdatedOn: Date
+   isSynced: boolean
+   schedulePeriods: any[]
 }

@@ -1,4 +1,4 @@
-import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../app/store';

@@ -29,6 +29,7 @@ export const networkAdminSlice = createSlice({
       },
       setCurrentNetwork: (state: INetworkAdminState, action: PayloadAction<INetwork>) => {
          state.currentNetwork = action.payload;
+         console.log('current network: ' + state.currentNetwork.networkCode);
       }
    },
    extraReducers: (builder) => {
