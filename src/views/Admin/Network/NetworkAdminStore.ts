@@ -39,7 +39,7 @@ export const networkAdminSlice = createSlice({
          .addCase(getAllNetworks.fulfilled, (state: INetworkAdminState, action: any) => {
             state.networks = sortArrayByProperty(action.payload.networks, 'networkCode');
             state.networks.forEach(ntwk => { state.networksById[ntwk.id] = ntwk; });
-            state.currentNetwork = state.currentNetwork || state.networks[6];
+            state.currentNetwork = state.currentNetwork || state.networks[0];
             state.loading = false;
          })
 

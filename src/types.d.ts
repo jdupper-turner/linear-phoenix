@@ -31,6 +31,19 @@ interface IUserAdminState {
    currentUser: IUser | null
 }
 
+interface IUserActivityState {
+   loading: boolean
+   userActivity: IUserActivity[]
+   userActivityById: { [key: number]: IUserActivity }
+
+   userActivityTypes: IUserActivityType[]
+   userActivityTypesById: { [key: number]: IUserActivityType }
+}
+
+
+
+
+
 
 
 
@@ -64,4 +77,21 @@ interface IUser {
    id: number
    userName: string
    emailAddress: string
+}
+
+interface IUserActivity {
+   id: number
+   networkId: number
+   userActivityTypeId: number
+   change: string
+   changedBy: number
+   changedOn: Date
+   status: string  
+   startDate?: Date
+   endDate?: Date
+}
+
+interface IUserActivityType {
+   id: number
+   name: string
 }

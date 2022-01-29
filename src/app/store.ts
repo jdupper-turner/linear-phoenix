@@ -1,16 +1,18 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import navigationReducer from '../views/Navigation/NavigationStore';
-import schedulePeriodReducer from '../views/SchedulePeriod/SchedulePeriodStore';
 import networkAdminReducer from '../views/Admin/Network/NetworkAdminStore';
+import schedulePeriodReducer from '../views/SchedulePeriod/SchedulePeriodStore';
+import userActivityReducer from '../views/Admin/UserActivity/UserActivityStore';
 import userAdminReducer from '../views/Admin/User/UserAdminStore';
 
 export const store = configureStore({
   reducer: {
     navigation: navigationReducer,
-    schedulePeriod: schedulePeriodReducer,
     networkAdmin: networkAdminReducer,
+    schedulePeriod: schedulePeriodReducer,
+    userActivity: userActivityReducer,
     userAdmin: userAdminReducer
-  },
+  }
 });
 
 export type AppDispatch = typeof store.dispatch;
