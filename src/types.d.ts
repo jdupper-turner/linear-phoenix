@@ -22,6 +22,7 @@ interface INetworkAdminState {
    networks: INetwork[]
    networksById: { [key: number]: INetwork }
    currentNetwork: INetwork | null
+   editedNetwork: INetwork | null
    
    mediaLengths: IMediaLength[]
    mediaLengthsById: { [key: number]: IMediaLength }
@@ -73,6 +74,12 @@ interface INetwork {
    id: number
    networkCode: string
    description: string
+   primaryEventsAsPromos: boolean
+   useCustomEventParameters: boolean
+   splitAInventories: boolean
+   movePrimaryEventsToBreaks: boolean
+   shopsAssetChangeAppNotifications: boolean
+   enablePallets: boolean
 }
 
 interface ISchedulePeriod {

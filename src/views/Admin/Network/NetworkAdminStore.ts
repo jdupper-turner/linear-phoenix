@@ -9,6 +9,7 @@ const initialState: INetworkAdminState = {
    networks: [],
    networksById: {},
    currentNetwork: null,
+   editedNetwork: null,
 
    mediaLengths: [],
    mediaLengthsById: {},
@@ -29,7 +30,41 @@ export const networkAdminSlice = createSlice({
       },
       setCurrentNetwork: (state: INetworkAdminState, action: PayloadAction<INetwork>) => {
          state.currentNetwork = action.payload;
-         console.log('current network: ' + state.currentNetwork.networkCode);
+      },
+      setNetworkToEdit(state: INetworkAdminState, action: PayloadAction<INetwork>) {
+         state.editedNetwork = Object.assign({}, action.payload);
+      },
+      updateNetworkCodeProperty(state: INetworkAdminState, action: PayloadAction<string>) {
+         if (state.editedNetwork)
+            state.editedNetwork.networkCode = action.payload;
+      },
+      updateNetworkDescriptionProperty(state: INetworkAdminState, action: PayloadAction<string>) {
+         if (state.editedNetwork)
+            state.editedNetwork.description = action.payload;
+      },
+      updateUsePrimaryEventsAsPromos(state: INetworkAdminState, action: PayloadAction<boolean>) {
+         if (state.editedNetwork)
+            state.editedNetwork.primaryEventsAsPromos = action.payload;
+      },
+      updateUseCustomEventParameters(state: INetworkAdminState, action: PayloadAction<boolean>) {
+         if (state.editedNetwork)
+            state.editedNetwork.useCustomEventParameters = action.payload;
+      },
+      updateUseSplitAInventories(state: INetworkAdminState, action: PayloadAction<boolean>) {
+         if (state.editedNetwork)
+            state.editedNetwork.splitAInventories = action.payload;
+      },
+      updateMovePrimaryEventsToBreaks(state: INetworkAdminState, action: PayloadAction<boolean>) {
+         if (state.editedNetwork)
+            state.editedNetwork.movePrimaryEventsToBreaks = action.payload;
+      },
+      updateUseShopsChangeNotifications(state: INetworkAdminState, action: PayloadAction<boolean>) {
+         if (state.editedNetwork)
+            state.editedNetwork.shopsAssetChangeAppNotifications = action.payload;
+      },
+      updateEnablePallets(state: INetworkAdminState, action: PayloadAction<boolean>) {
+         if (state.editedNetwork)
+            state.editedNetwork.enablePallets = action.payload;
       }
    },
    extraReducers: (builder) => {
@@ -90,5 +125,17 @@ export const getNetworkDayParts = createAsyncThunk(
 );
 
 
-export const { setLoadingTo, setCurrentNetwork } = networkAdminSlice.actions;
+export const {
+   setLoadingTo,
+   setCurrentNetwork,
+   setNetworkToEdit,
+   updateNetworkCodeProperty,
+   updateNetworkDescriptionProperty,
+   updateUsePrimaryEventsAsPromos,
+   updateUseCustomEventParameters,
+   updateUseSplitAInventories,
+   updateMovePrimaryEventsToBreaks,
+   updateUseShopsChangeNotifications,
+   updateEnablePallets
+} = networkAdminSlice.actions;
 export default networkAdminSlice.reducer;

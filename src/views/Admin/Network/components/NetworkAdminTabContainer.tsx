@@ -59,7 +59,7 @@ export default function NetworkAdminTabContainer() {
    return (
       <Box sx={{ width: '100%' }}>
          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+            <Tabs value={value} onChange={handleChange}>
                <Tab label="Network Admin" {...a11yProps(0)} />
                <Tab label="Media Lengths" {...a11yProps(1)} />
                <Tab label="Day Parts" {...a11yProps(2)} />
