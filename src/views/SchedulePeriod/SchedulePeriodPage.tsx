@@ -1,19 +1,15 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { SchedulePeriodWeek } from './components/SchedulePeriodWeek'
+import { FC } from 'react';
+import { Box } from '@mui/material';
 
-export const SchedulePeriodPage = () => {
-   const dispatch = useDispatch()
+export interface ISchedulePeriodPage {
+   id?: number
+   startDate: Date
+}
 
-   useEffect(() => {
-   }, [dispatch])
+export const SchedulePeriodPage: FC<ISchedulePeriodPage> = (props: ISchedulePeriodPage) => {
+   console.log(props);
 
    return (
-      <main>
-         <h3>Schedule Period Page</h3>
-         <div>
-            <SchedulePeriodWeek weekStartDate={new Date()} />
-         </div>
-      </main>
-   )
-}
+      <Box></Box>
+   );
+};

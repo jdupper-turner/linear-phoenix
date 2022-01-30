@@ -11,7 +11,7 @@ export const UserActivityTable: FC = () => {
    return (
       <Box>
          <TableContainer component={Paper}>
-            <Table size='small'>
+            <Table size='small' stickyHeader>
                <TableHead>
                   <TableRow>
                      <TableCell>Change Timestamp</TableCell>

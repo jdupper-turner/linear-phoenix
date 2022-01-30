@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import { Grid, Paper, Switch } from '@mui/material';
+import { Box, Grid, Paper, Switch } from '@mui/material';
 import { HomePage } from './views/Home/HomePage';
-import { SchedulePeriodPage } from './views/SchedulePeriod/SchedulePeriodPage';
+import { SchedulePeriodPage } from './views/SchedulePeriod/SchedulePeriodsPage';
 import { AsRunReportPage } from './views/Reports/AsRun/AsRunReportPage';
 import { NavigationBar } from './views/Navigation/NavigationBar';
 import { UserActivityPage } from './views/Admin/UserActivity/UserActivityPage';
@@ -12,7 +12,8 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { useDispatch } from 'react-redux';
 import { getAllNetworks } from './views/Admin/Network/NetworkAdminStore';
-
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 function App() {
    const [darkMode, setDarkMode] = useState<boolean>(true);
@@ -31,10 +32,16 @@ function App() {
    return (
       <main className='App'>
          <ThemeProvider theme={theme}>
-            <Paper sx={{height:'100%'}}>
+            <Paper sx={{ height: '100vh' }}>
                <Grid container>
                   <NavigationBar />
-                  <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+                  <Box sx={{display:'inline'}}>
+                     <Grid container>
+                        <Grid item><LightModeIcon sx={{ pt: 1 }} /></Grid>
+                        <Grid item><Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} /></Grid>
+                        <Grid item><DarkModeIcon sx={{ pt: 1 }} /></Grid>
+                     </Grid>
+                  </Box>
                </Grid>
                <Routes>
                   <Route path='/' element={<HomePage />} />

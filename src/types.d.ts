@@ -111,5 +111,6 @@ interface IShopsChangeNotification {
    status: string
    shopsUpdatedOn: Date
    isSynced: boolean
+   shopsChangeNotifications: any[]
    schedulePeriods: any[]
 }
