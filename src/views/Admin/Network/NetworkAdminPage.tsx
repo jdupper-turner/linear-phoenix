@@ -10,6 +10,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 export const NetworkAdminPage: FC = () => {
    const loading: boolean = useSelector((s: RootState) => s.networkAdmin.loading);
    const dispatch = useDispatch();
+
    useEffect(() => {
       dispatch(getAllNetworks())
    }, [dispatch])
