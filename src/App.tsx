@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { getAllNetworks } from './views/Admin/Network/NetworkAdminStore';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { PlanningAdminPage } from './views/Admin/Planning/PlanningAdminPage';
 
 function App() {
    const [darkMode, setDarkMode] = useState<boolean>(true);
@@ -48,6 +49,7 @@ function App() {
                   <Route path='/SchedulePeriod' element={<SchedulePeriodPage />} />
                   <Route path='/Reports/AsRun' element={<AsRunReportPage />} />
                   <Route path='/Admin/Network' element={<NetworkAdminPage />} />
+                  <Route path='/Admin/Planning' element={<PlanningAdminPage />} />
                   <Route path='/Admin/User' element={<UserAdminPage />} />
                   <Route path='/Admin/UserActivity' element={<UserActivityPage />} />
                </Routes>
